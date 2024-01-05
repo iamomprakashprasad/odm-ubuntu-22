@@ -1,6 +1,6 @@
 import time
 from opendm.dem.ground_rectification.extra_dimensions.userdata_dimension import UserDataDimension
-import pdal
+from opendm.dem import pdal
 import numpy as np
 from opendm import log
 from ..point_cloud import PointCloud
