@@ -1,4 +1,5 @@
-![ODM Logo](https://user-images.githubusercontent.com/1951843/79699889-438ce580-8260-11ea-9c79-8667834aeab2.png)
+Deprecated will update later
+<!-- ![ODM Logo](https://user-images.githubusercontent.com/1951843/79699889-438ce580-8260-11ea-9c79-8667834aeab2.png)
 
 An open source command line toolkit for processing aerial drone imagery. ODM turns simple 2D images into:
 
@@ -262,4 +263,4 @@ ODM makes use of [several libraries](https://github.com/OpenDroneMap/ODM/blob/ma
 
 ## Trademark
 
-See [Trademark Guidelines](https://github.com/OpenDroneMap/documents/blob/master/TRADEMARK.md)
+See [Trademark Guidelines](https://github.com/OpenDroneMap/documents/blob/master/TRADEMARK.md) -->
