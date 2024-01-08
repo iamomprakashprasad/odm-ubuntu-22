@@ -23,7 +23,7 @@ pcl.tar.gz
 ceres-solver.tar.gz
 *.pyc
 opencv.zip
-# settings.yaml
+settings.yaml
 .setupdevenv
 __pycache__
 *.snap
