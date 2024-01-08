@@ -52,7 +52,7 @@ ensure_prereqs() {
     fi
 
     echo "Installing tzdata"
-    sudo $APT_GET install -y -qq tzdata libxstl1-dev libboost-all-dev
+    sudo $APT_GET install -y -qq tzdata libxslt1-dev libboost-all-dev
 
     UBUNTU_VERSION=$(lsb_release -r)
     if [[ "$UBUNTU_VERSION" == *"22.04"* ]]; then
