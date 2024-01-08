@@ -27,6 +27,7 @@ opencv.zip
 .setupdevenv
 __pycache__
 *.snap
+.vscode/
 storage/
 
 

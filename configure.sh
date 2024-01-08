@@ -52,14 +52,17 @@ ensure_prereqs() {
     fi
 
     echo "Installing tzdata"
-    sudo $APT_GET install -y -qq tzdata
+    sudo $APT_GET install -y -qq tzdata libxstl1-dev libboost-all-dev
 
     UBUNTU_VERSION=$(lsb_release -r)
     if [[ "$UBUNTU_VERSION" == *"22.04"* ]]; then
         echo "Enabling PPA for Ubuntu GIS"
         sudo $APT_GET install -y -qq --no-install-recommends software-properties-common
         sudo add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
+        sudo add-apt-repository -y ppa:deadsnakes/ppa
         sudo $APT_GET update
+        echo "Intalling python3.8"
+        sudo $APT_GET install -y -qq python3.8 python3.8-venv python3.8-dev
     fi
 
     echo "Installing Python PIP"

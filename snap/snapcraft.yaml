@@ -37,6 +37,7 @@ parts:
       - gdal-bin
       - gfortran # to build scipy
       - git
+      - libxslt
       - libgdal-dev
       - libgeotiff-dev
       - libjsoncpp-dev
@@ -89,6 +90,7 @@ parts:
       - libtbb2-dev
       - libtiff-dev
       - libxext-dev
+      - libxslt1-dev
       - proj-bin
     stage-packages:
       - libavcodec58
