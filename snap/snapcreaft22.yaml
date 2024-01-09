@@ -2,7 +2,7 @@ name: opendronemap
 adopt-info: odm
 grade: stable
 confinement: strict
-base: core20
+base: core22
 
 summary: Command line toolkit for processing aerial drone imagery
 description: >
@@ -13,7 +13,7 @@ description: >
   * Georeferenced Orthorectified Imagery
   * Georeferenced Digital Elevation Models
 
-  The application is available for Windows, Mac and Linux and it works from the command line, making it ideal for power users, scripts and for integration with other software.
+  The application is available Linux and it works from the command line, making it ideal for power users, scripts and for integration with other software.
 
 # The UbuntuGIS PPA only has i386 and amd64 packages so we can't build any
 # other architectures. Therefore let's limit to those here.
@@ -37,6 +37,7 @@ parts:
       - gdal-bin
       - gfortran # to build scipy
       - git
+      - libxslt
       - libgdal-dev
       - libgeotiff-dev
       - libjsoncpp-dev
@@ -86,9 +87,10 @@ parts:
       - libpng-dev
       - libproj-dev
       - libswscale-dev
-      - libtbb-dev
+      - libtbb2-dev
       - libtiff-dev
       - libxext-dev
+      - libxslt1-dev
       - proj-bin
     stage-packages:
       - libavcodec58
@@ -101,7 +103,7 @@ parts:
       - libpng16-16
       - libproj19
       - libswscale5
-      - libtbb2
+      - libtbb2-dev
       - libtiff5
       - libwebpdemux2
       - libxext6

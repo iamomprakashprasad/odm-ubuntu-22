@@ -6,7 +6,7 @@ APT_GET="env DEBIAN_FRONTEND=noninteractive $(command -v apt-get)"
 check_version(){  
   UBUNTU_VERSION=$(lsb_release -r)
   case "$UBUNTU_VERSION" in
-    *"22.04"*|*"21.04"*)
+    *"20.04"*|*"21.04"*|*"22.04"*)
       echo "Ubuntu: $UBUNTU_VERSION, good!"
       ;;
     *"18.04"*|*"16.04"*)
@@ -17,7 +17,7 @@ check_version(){
       exit 1
       ;;
     *)
-      echo "You are not on Ubuntu 21.04 (detected: $UBUNTU_VERSION)"
+      echo "You are not on Ubuntu 22.04 (detected: $UBUNTU_VERSION)"
       echo "It might be possible to run ODM on a newer version of Ubuntu, however, you cannot rely on this script."
       exit 1
       ;;
@@ -54,15 +54,31 @@ ensure_prereqs() {
     echo "Installing tzdata"
     sudo $APT_GET install -y -qq tzdata libxslt1-dev libboost-all-dev
 
+
+
     UBUNTU_VERSION=$(lsb_release -r)
     if [[ "$UBUNTU_VERSION" == *"22.04"* ]]; then
         echo "Enabling PPA for Ubuntu GIS"
         sudo $APT_GET install -y -qq --no-install-recommends software-properties-common
         sudo add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
+
+        echo "Adding python3.8 repository"
         sudo add-apt-repository -y ppa:deadsnakes/ppa
+
         sudo $APT_GET update
-        echo "Intalling python3.8"
+
+        echo "Installing Python3.8"
         sudo $APT_GET install -y -qq python3.8 python3.8-venv python3.8-dev
+
+        echo "Installing Boost and xslt"
+        sudo $APT_GET install -y -qq libxslt1-dev libboost-all-dev
+    fi
+
+    if [[ "$UBUNTU_VERSION" == *"20.04"* ]]; then
+        echo "Enabling PPA for Ubuntu GIS"
+        sudo $APT_GET install -y -qq --no-install-recommends software-properties-common
+        sudo add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
+        sudo $APT_GET update
     fi
 
     echo "Installing Python PIP"
@@ -86,6 +102,9 @@ installdepsfromsnapcraft() {
     UBUNTU_VERSION=$(lsb_release -r)
     SNAPCRAFT_FILE="snapcraft.yaml"
     if [[ "$UBUNTU_VERSION" == *"21.04"* ]]; then
+        SNAPCRAFT_FILE="snapcraft21.yaml"
+    fi
+    if [[ "$UBUNTU_VERSION" == *"22.04"* ]]; then
         SNAPCRAFT_FILE="snapcraft21.yaml"
     fi
 
@@ -183,7 +202,8 @@ clean() {
     rm -rf \
         ${RUNPATH}/SuperBuild/build \
         ${RUNPATH}/SuperBuild/download \
-        ${RUNPATH}/SuperBuild/src
+        ${RUNPATH}/SuperBuild/src \
+        ${RUNPATH}/SuperBuild/install
 
     # find in /code and delete static libraries and intermediate object files
     find ${RUNPATH} -type f -name "*.a" -delete -or -type f -name "*.o" -delete
@@ -210,7 +230,7 @@ usage() {
     echo "[nproc] is an optional argument that can set the number of processes for the make -j tag. By default it uses $(nproc)"
 }
 
-if [[ $1 =~ ^(install|installruntimedepsonly|reinstall|uninstall|installreqs|clean)$ ]]; then
+if [[ $1 =~ ^(install|reinstall|uninstall|installreqs|clean)$ ]]; then
     RUNPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
     "$1"
 else
