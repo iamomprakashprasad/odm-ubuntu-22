@@ -1,4 +1,35 @@
-Deprecated will update later
+# Requirements
+
+### Ubuntu 
+- Distributor ID:	Ubuntu
+- Description:	Ubuntu 22.04.3 LTS
+- Release:	22.04
+- Codename:	jammy
+
+### Nvidia
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.146.02             Driver Version: 535.146.02   CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA GeForce RTX 4090        Off | 00000000:01:00.0  On |                  Off |
+|  0%   39C    P8              15W / 450W |    813MiB / 24564MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+
+### Cuda toolkit
+
+- <b> Refer to this documentation [https://developer.nvidia.com/cuda-12-2-0-download-archive] </b>
+
+# Building ODM required libraries
+- ./configure.sh install
+
+# Running odm
+- ./run.sh
+
+
 <!-- ![ODM Logo](https://user-images.githubusercontent.com/1951843/79699889-438ce580-8260-11ea-9c79-8667834aeab2.png)
 
 An open source command line toolkit for processing aerial drone imagery. ODM turns simple 2D images into:

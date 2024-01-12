@@ -52,7 +52,7 @@ ensure_prereqs() {
     fi
 
     echo "Installing tzdata"
-    sudo $APT_GET install -y -qq tzdata libxslt1-dev libboost-all-dev
+    sudo $APT_GET install -y -qq tzdata
 
 
 
@@ -72,6 +72,13 @@ ensure_prereqs() {
 
         echo "Installing Boost and xslt"
         sudo $APT_GET install -y -qq libxslt1-dev libboost-all-dev
+
+        echo "Installing gcc and g++ 10"
+        sudo $APT_GET install -y -qq g++-10 gcc-10
+
+        echo "Installing libtbb2-dev for tbb_sttdeh.h"
+        sudo $APT_GET install -y -qq libtbb2-dev
+
     fi
 
     if [[ "$UBUNTU_VERSION" == *"20.04"* ]]; then

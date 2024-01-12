@@ -87,7 +87,6 @@ parts:
       - libpng-dev
       - libproj-dev
       - libswscale-dev
-      - libtbb2-dev
       - libtiff-dev
       - libxext-dev
       - libxslt1-dev
