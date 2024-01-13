@@ -71,13 +71,17 @@ ensure_prereqs() {
         sudo $APT_GET install -y -qq python3.8 python3.8-venv python3.8-dev
 
         echo "Installing Boost and xslt"
-        sudo $APT_GET install -y -qq libxslt1-dev libboost-all-dev
+        sudo $APT_GET install -y -qq libboost-all-dev
 
         echo "Installing gcc and g++ 10"
         sudo $APT_GET install -y -qq g++-10 gcc-10
 
-        echo "Installing libtbb2-dev for tbb_sttdeh.h"
-        sudo $APT_GET install -y -qq libtbb2-dev
+
+        echo "downgrading libusb-1"
+        sudo apt install -y -qq libusb-1.0-0=2:1.0.25-1ubuntu1 --allow-downgrades
+
+        echo "Installing base required packages"
+        xargs sudo apt install -y < apt_requirements.txt
 
     fi
 
@@ -89,54 +93,54 @@ ensure_prereqs() {
     fi
 
     echo "Installing Python PIP"
-    sudo $APT_GET install -y -qq --no-install-recommends \
-        python3-pip \
-        python3-setuptools
-    sudo pip3 install -U pip
-    sudo pip3 install -U shyaml
+    # sudo $APT_GET install -y -qq --no-install-recommends \
+    #     python3.8-pip \
+    #     python3.8-setuptools
+    sudo python3.8 -m pip install -U pip
+    sudo python3.8 -m pip install -U setuptools
+    sudo python3.8 -m pip install -U shyaml
 }
 
 # Save all dependencies in snapcraft.yaml to maintain a single source of truth.
 # Maintaining multiple lists will otherwise be painful.
-installdepsfromsnapcraft() {
-    section="$2"
-    case "$1" in
-        build) key=build-packages; ;;
-        runtime) key=stage-packages; ;;
-        *) key=build-packages; ;; # shouldn't be needed, but it's here just in case
-    esac
+# installdepsfromsnapcraft() {
+#     section="$2"
+#     case "$1" in
+#         build) key=build-packages; ;;
+#         runtime) key=stage-packages; ;;
+#         *) key=build-packages; ;; # shouldn't be needed, but it's here just in case
+#     esac
 
-    UBUNTU_VERSION=$(lsb_release -r)
-    SNAPCRAFT_FILE="snapcraft.yaml"
-    if [[ "$UBUNTU_VERSION" == *"21.04"* ]]; then
-        SNAPCRAFT_FILE="snapcraft21.yaml"
-    fi
-    if [[ "$UBUNTU_VERSION" == *"22.04"* ]]; then
-        SNAPCRAFT_FILE="snapcraft21.yaml"
-    fi
+#     UBUNTU_VERSION=$(lsb_release -r)
+#     SNAPCRAFT_FILE="snapcraft.yaml"
+#     if [[ "$UBUNTU_VERSION" == *"21.04"* ]]; then
+#         SNAPCRAFT_FILE="snapcraft21.yaml"
+#     fi
+#     if [[ "$UBUNTU_VERSION" == *"22.04"* ]]; then
+#         SNAPCRAFT_FILE="snapcraft21.yaml"
+#     fi
 
-    cat snap/$SNAPCRAFT_FILE | \
-        shyaml get-values-0 parts.$section.$key | \
-        xargs -0 sudo $APT_GET install -y -qq --no-install-recommends
-}
+#     cat snap/$SNAPCRAFT_FILE | \
+#         shyaml get-values-0 parts.$section.$key | \
+#         xargs -0 sudo $APT_GET install -y -qq --no-install-recommends
+# }
 
 installruntimedepsonly() {
     echo "Installing runtime dependencies"
     ensure_prereqs
     check_version
-
-    echo "Installing Required Requisites"
-    installdepsfromsnapcraft runtime prereqs
-    echo "Installing OpenCV Dependencies"
-    installdepsfromsnapcraft runtime opencv
-    echo "Installing OpenSfM Dependencies"
-    installdepsfromsnapcraft runtime opensfm
-    echo "Installing OpenMVS Dependencies"
-    installdepsfromsnapcraft runtime openmvs
+    
+    # echo "Installing Required Requisites"
+    # installdepsfromsnapcraft runtime prereqs
+    # echo "Installing OpenCV Dependencies"
+    # installdepsfromsnapcraft runtime opencv
+    # echo "Installing OpenSfM Dependencies"
+    # installdepsfromsnapcraft runtime opensfm
+    # echo "Installing OpenMVS Dependencies"
+    # installdepsfromsnapcraft runtime openmvs
 }
 
 installreqs() {
-    cd /code
     
     ## Set up library paths
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$RUNPATH/SuperBuild/install/lib
@@ -146,17 +150,17 @@ installreqs() {
     ensure_prereqs
     check_version
     
-    echo "Installing Required Requisites"
-    installdepsfromsnapcraft build prereqs
-    echo "Installing OpenCV Dependencies"
-    installdepsfromsnapcraft build opencv
-    echo "Installing OpenSfM Dependencies"
-    installdepsfromsnapcraft build opensfm
-    echo "Installing OpenMVS Dependencies"
-    installdepsfromsnapcraft build openmvs
+    # echo "Installing Required Requisites"
+    # installdepsfromsnapcraft build prereqs
+    # echo "Installing OpenCV Dependencies"
+    # installdepsfromsnapcraft build opencv
+    # echo "Installing OpenSfM Dependencies"
+    # installdepsfromsnapcraft build opensfm
+    # echo "Installing OpenMVS Dependencies"
+    # installdepsfromsnapcraft build openmvs
     
     set -e
-    pip install --ignore-installed -r requirements.txt
+    sudo python3.8 -m pip install --ignore-installed -r requirements.txt
     #if [ ! -z "$GPU_INSTALL" ]; then
     #fi
     set +e

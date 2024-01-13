@@ -1,6 +1,6 @@
 name: opendronemap
 adopt-info: odm
-grade: stable
+grade: development
 confinement: strict
 base: core22
 
