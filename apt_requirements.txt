@@ -66,3 +66,5 @@ libcolamd2
 libcxsparse3
 libgoogle-glog0v5
 libsuitesparseconfig5
+pdal
+libpdal-dev
