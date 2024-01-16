@@ -53,6 +53,7 @@ libopenjpip7
 liblapack3
 libpng16-16
 libswscale5
+libtbb2
 libtbb2-dev
 libtiff5
 libwebpdemux2
@@ -68,3 +69,14 @@ libgoogle-glog0v5
 libsuitesparseconfig5
 pdal
 libpdal-dev
+libproj-dev
+libboost-program-options-dev
+libboost-iostreams-dev
+libboost-serialization-dev
+libboost-system-dev
+libboost-program-options1.74.0
+libboost-iostreams1.74.0
+libboost-serialization1.74.0
+libboost-system1.74.0
+libgoogle-glog-dev
+libsuitesparse-dev

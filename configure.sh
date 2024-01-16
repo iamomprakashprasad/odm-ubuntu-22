@@ -96,9 +96,9 @@ ensure_prereqs() {
     # sudo $APT_GET install -y -qq --no-install-recommends \
     #     python3.8-pip \
     #     python3.8-setuptools
-    sudo /usr/bin/python3.8 -m pip install -U pip
-    sudo /usr/bin/python3.8 -m pip install -U setuptools
-    sudo /usr/bin/python3.8 -m pip install -U shyaml
+    sudo python3 -m pip install -U pip
+    sudo python3 -m pip install -U setuptools
+    sudo python3 -m pip install -U shyaml
 }
 
 # Save all dependencies in snapcraft.yaml to maintain a single source of truth.
@@ -160,7 +160,7 @@ installreqs() {
     # installdepsfromsnapcraft build openmvs
     
     set -e
-    sudo /usr/bin/python3.8 -m pip install --ignore-installed -r requirements.txt
+    sudo python3 -m pip install --ignore-installed -r requirements.txt
     # if [ ! -z "$GPU_INSTALL" ]; then
     # fi
     set +e
