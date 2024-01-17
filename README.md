@@ -1,3 +1,4 @@
+![Botlab Dynamics Logo](https://botlabdynamics.com/sites/default/files/2022-11/BL%20Botlab%20Dynamics%20%281%29.png)
 # Requirements
 
 ### Ubuntu 
@@ -41,7 +42,6 @@
 # Running odm
 - `./run.sh` (followed with params)
 
-![Botlab Dynamics Logo](https://botlabdynamics.com/sites/default/files/2022-11/BL%20Botlab%20Dynamics%20%281%29.png)
 ![ODM Logo](https://user-images.githubusercontent.com/1951843/79699889-438ce580-8260-11ea-9c79-8667834aeab2.png)
 
 An open source command line toolkit for processing aerial drone imagery. ODM turns simple 2D images into:
