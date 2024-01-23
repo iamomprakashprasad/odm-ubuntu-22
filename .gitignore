@@ -29,6 +29,7 @@ __pycache__
 *.snap
 .vscode/
 storage/
+testing/
 
 
 vcpkg/
