@@ -39,6 +39,9 @@
 ## After configuration finished revert default python3 to default ubuntu Python3
 - `sudo update-alternatives --config python3` (select default python3 version)
 
+## installing odm
+- `./configure.sh install`
+
 # Running odm
 - `./run.sh` (followed with params)
 
