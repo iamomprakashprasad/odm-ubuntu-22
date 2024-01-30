@@ -62,7 +62,7 @@ ensure_prereqs() {
         sudo apt install -y -qq libusb-1.0-0=2:1.0.25-1ubuntu1 --allow-downgrades
 
         echo "Installing base required packages"
-        xargs sudo apt install -y < apt_requirements.txt
+        xargs sudo apt install -y --allow-downgrades < apt_requirements.txt
 
     fi
 
