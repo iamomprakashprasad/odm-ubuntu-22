@@ -24,6 +24,13 @@
 
 - <b> Refer to this documentation [https://developer.nvidia.com/cuda-12-2-0-download-archive] </b>
 
+### Configure UbuntuGis
+
+`sudo apt install -y -qq --no-install-recommends software-properties-common`
+`sudo add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable`
+`sudo apt update`
+
+
 #### Install python3.8
 - `sudo add-apt-repository -y ppa:deadsnakes/ppa`
 - `sudo apt install python3.8 python3.8-venv python3.8-dev`
