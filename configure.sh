@@ -141,7 +141,7 @@ installreqs() {
     # installdepsfromsnapcraft build openmvs
     
     set -e
-    sudo python3 -m pip install --ignore-installed -r requirements.txt
+    sudo python3 -m pip install --force-reinstall -r requirements.txt
     # if [ ! -z "$GPU_INSTALL" ]; then
     # fi
     set +e
