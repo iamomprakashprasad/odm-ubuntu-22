@@ -26,9 +26,9 @@
 
 ### Configure UbuntuGis
 
-`sudo apt install -y -qq --no-install-recommends software-properties-common`
-`sudo add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable`
-`sudo apt update`
+- `sudo apt install -y -qq --no-install-recommends software-properties-common`
+- `sudo add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable`
+- `sudo apt update`
 
 
 #### Install python3.8
