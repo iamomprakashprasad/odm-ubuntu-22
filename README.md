@@ -40,6 +40,16 @@
 - `sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 2`
 - `sudo update-alternatives --config python3` (select python3.8)
 
+### Install gdal=3.6
+- Download [Gdal - Version-3.6](https://github.com/OSGeo/gdal/releases/download/v3.6.4/gdal-3.6.4.tar.gz)
+- tar -xvf gdal-3.6.4.tar.gz && gdal-3.6.4
+- cd gdal
+- mkdir build && cd build
+- cmake ..
+- make -j
+- sudo make install
+- sudo python3.8 -m pip install gdal==3.6.4
+
 # Building ODM required libraries
 - `./configure.sh install`
 
