@@ -21,7 +21,6 @@ libtbb2-dev
 python3-distutils
 libgoogle-glog-dev
 libcholmod3
-gdal-bin
 
 pkg-config
 libsuitesparseconfig5
@@ -72,7 +71,6 @@ libssl-dev
 ninja-build
 python3-dev
 libjsoncpp-dev
-python3-gdal
 libpng-dev
 libxext-dev
 libopenjpip7
