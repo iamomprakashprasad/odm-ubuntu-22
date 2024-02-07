@@ -30,6 +30,8 @@
 - `sudo add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable`
 - `sudo apt update`
 
+### Install numpy for default python
+- `sudo python3.x -m pip install numpy` (x should be default python3 version check by `python3 --version`)
 
 #### Install python3.8
 - `sudo add-apt-repository -y ppa:deadsnakes/ppa`
